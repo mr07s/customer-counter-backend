@@ -3,19 +3,20 @@ import customer from '../models/customer.js'
 
 
 export const Customer = async(req,res) =>{
-
+// const {id:userId} =req.params;
 const postcustomerdata =req.body;
-
+console.log(postcustomerdata);
 const customerdata =new customer(postcustomerdata);
-
+console.log(customerdata);
 try{
 
 await customerdata.save();
-res.status(200).json("Customer details dubmitted  sucessfully ");
+res.status(200).json("Customer details submitted  sucessfully ");
 
 
 }
-catch(error){
+catch(error)
+{
 console.log(error);
 res.status(409).json("Coudn't post a new customerdata sucessfully");
 
@@ -25,8 +26,6 @@ res.status(409).json("Coudn't post a new customerdata sucessfully");
 
 
 export const getcustomerdetails =  async(req,res)=>{
-
-
 try{
     // const user =req.body;
         
@@ -72,10 +71,10 @@ export const deleteCustomer= async(req,res)=>{
 
     export const editCustomer =async(req,res)=>{
         const {id:_id} = req.params;
-        const{Name,undertakenby, price,purchasingdate,duedate}=req.body;
+        const{Name,undertakenby, price,purchasingdate,duedate,paidamount}=req.body;
         try{
             await customer.findByIdAndUpdate(_id,{
-                $set:{Name:Name,undertakenby:undertakenby,undertakenby:undertakenby,price:price,purchasingdate:purchasingdate,duedate:duedate},
+                $set:{Name:Name,undertakenby:undertakenby,undertakenby:undertakenby,price:price,purchasingdate:purchasingdate,duedate:duedate,paidamount:paidamount},
                 // $set:{undertakenby:undertakenby},
                 // $set:{price:price},
                 // $set:{purchasingdate:purchasingdate},

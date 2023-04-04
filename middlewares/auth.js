@@ -9,12 +9,12 @@ const token = req.headers.authorization.split(' ')[1]
 
 let decodeData = jwt.verify(token,"Hiii")
 req.userId =decodeData?.id
-    next()
+next()
 
 
 } catch (error) {
 
-    console.log("hiiii");
+    console.log(error);
     
 }
 

@@ -15,6 +15,7 @@ undertakenby:{type:String},
 price:{type:String},
 purchasingdate:{type:String},
 duedate:{type:String},
+paidamount:{type:String},
 userId:{type:String}
 
 
