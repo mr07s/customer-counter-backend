@@ -18,8 +18,14 @@ const customerSchema = mongoose.Schema({
     paidamount: { type: String },
     volume: { type: String },
     pages: { type: String },
-    userId: { type: String }
-
+    userId: { type: String },
+    nextpaymentdate:{type:String},
+    paymentHistory:[{
+        price: {type: String},
+        paidamount:{type: String},
+        due:{type: String},
+        lastPaidDate:{type: Date},
+    }]
 
 
 })

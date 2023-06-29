@@ -69,10 +69,10 @@ export const deleteCustomer = async (req, res) => {
 
 export const editCustomer = async (req, res) => {
     const { id: _id } = req.params;
-    const { Name, undertakenby, price, purchasingdate, duedate, paidamount, volume, pages } = req.body;
+    const { Name, undertakenby, price, purchasingdate, duedate, paidamount, volume, pages,nextpaymentdate } = req.body;
     try {
         await customer.findByIdAndUpdate(_id, {
-            $set: { Name: Name, undertakenby: undertakenby, undertakenby: undertakenby, price: price, purchasingdate: purchasingdate, duedate: duedate, paidamount: paidamount, volume, pages },
+            $set: { Name: Name, undertakenby: undertakenby, undertakenby: undertakenby, price: price, purchasingdate: purchasingdate, duedate: duedate, paidamount: paidamount, volume, pages,nextpaymentdate },
             // $set:{undertakenby:undertakenby},
             // $set:{price:price},
             // $set:{purchasingdate:purchasingdate},
