@@ -24,7 +24,7 @@ app.use('/addproduct',productroutes);
 
 const PORT = process.env.PORT || 5000
 
-const connection_Url ="mongodb+srv://soumya:UbsQsxjlFVkIc4ju@cluster0.grb5anm.mongodb.net/?retryWrites=true&w=majority"
+const connection_Url =process.env.CONNECTION_URL;
 
 mongoose.connect(connection_Url,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=>app.listen(PORT,()=>{console.log(`server is running on port ${PORT}`)}))
