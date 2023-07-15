@@ -69,15 +69,18 @@ export const deleteCustomer = async (req, res) => {
 
 export const editCustomer = async (req, res) => {
     const { id: _id } = req.params;
-    const { Name, undertakenby, price, purchasingdate, duedate, paidamount, volume, pages,nextpaymentdate } = req.body;
+    const { Name, undertakenby, price, nextpaymentdate,purchasingdate, duedate, paidamount, volume, pages } = req.body;
+    console.log(nextpaymentdate)
     try {
         await customer.findByIdAndUpdate(_id, {
-            $set: { Name: Name, undertakenby: undertakenby, undertakenby: undertakenby, price: price, purchasingdate: purchasingdate, duedate: duedate, paidamount: paidamount, volume, pages,nextpaymentdate },
+            $set: { Name: Name, undertakenby: undertakenby, price: price,nextpaymentdate, purchasingdate: purchasingdate, duedate: duedate, paidamount: paidamount, volume, pages },
             // $set:{undertakenby:undertakenby},
             // $set:{price:price},
             // $set:{purchasingdate:purchasingdate},
             // $set:{duedate:duedate},
         });
+        console.log("nextpaymentdate")
+        console.log(req.body)
 
         return res.status(200).json({ message: "yahhh!updated succesfully" })
     }

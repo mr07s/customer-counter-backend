@@ -12,6 +12,7 @@ const customerSchema = mongoose.Schema({
 
     Name: { type: String },
     undertakenby: { type: String },
+    // actualprice:{type:String},
     price: { type: String },
     purchasingdate: { type: String },
     duedate: { type: String },
