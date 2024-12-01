@@ -1,10 +1,8 @@
 import axios from "axios";
 import sha256 from "sha256";
 import crypto from "crypto";
-// import uniqueId from "uniqueid";
-import { nanoid } from "nanoid";
 
-const marchentTransId = nanoid().substring(0, 20);
+const marchentTransId = crypto.randomUUID().substring(0, 20);
 console.log(marchentTransId);
 const merchantId = "PGTESTPAYUAT86";
 const merchantUserId = "MUID123";
