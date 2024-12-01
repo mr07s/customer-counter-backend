@@ -19,9 +19,9 @@ export const paymentfunc = async (req, res) => {
       merchantTransactionId: marchentTransId,
       merchantUserId,
       //converting ruppes in
-      amount: 100 * 100,
-      redirectUrl: `http://localhost:3000/inventory`,
-      redirectMode: "REDIRECT",
+      amount: amount * 100,
+      redirectUrl: `http://localhost:5000/phonepay/afterpay/${marchentTransId}`,
+      redirectMode: "POST",
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -104,22 +104,22 @@ export const afterPay = async (req, res) => {
       // console.log(response);
       // console.log(response.data.code);
 
-      // if (response.data.code == "PAYMENT_SUCCESS") {
-      //   //write databse logic here.
+      if (response.data.code == "PAYMENT_SUCCESS") {
+        // databse logic here.
 
-      //   console.log("Payment Successfull");
+        console.log("Payment Successfull");
 
-      //   const url = "http://localhost:3000/payment/success";
-      //   return res.redirect(url);
-      // }
-      // if (response.data.code == "PAYMENT_PENDING") {
-      //   const url = "http://localhost:3000/payment/pending";
-      //   return res.redirect(url);
-      // } else {
-      //   const url = "http://localhost:3000/payment/failed";
-      //   return res.redirect(url);
-      // }
-      return res.json(response.data.code);
+        const url = "http://localhost:3000/payment/success";
+        return res.redirect(url);
+      }
+      if (response.data.code == "PAYMENT_PENDING") {
+        const url = "http://localhost:3000/payment/pending";
+        return res.redirect(url);
+      } else {
+        const url = "http://localhost:3000/payment/failed";
+        return res.redirect(url);
+      }
+      // return res.json(response.data.code);
     } catch (e) {
       res.status(500).json({
         msg: "Error checking payment status",
