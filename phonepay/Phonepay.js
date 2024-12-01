@@ -2,7 +2,7 @@ import axios from "axios";
 import sha256 from "sha256";
 import crypto from "crypto";
 // import uniqueId from "uniqueid";
-import { v4 as uuidv4, v6 as uuidv6 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 const marchentTransId = uuidv4().substring(0, 20);
 const merchantId = "PGTESTPAYUAT86";
